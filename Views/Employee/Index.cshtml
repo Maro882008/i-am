@@ -1,0 +1,40 @@
+﻿@model List<MVC.Models.Entities.Employee>
+<h1>all employes</h1>
+<a asp-action="add" class="btn btn-outline-dark">Create</a>
+@{
+   if (Model == null)
+   {
+        <h1>Not Found</h1>
+   }
+   else
+   {
+
+        <table class="table table-striped">
+       <thead>
+            <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Department_Name</th>
+            <th>Update</th>
+            </tr>
+       </thead>
+       <tbody>
+                
+                    @foreach (var emp in Model)
+                    {
+                        <tr>
+                        <td>@emp.Id</td>
+                        <td>@emp.name</td>
+                        <td>@emp.Salary</td>
+                        <td>@emp.Department.name</td>
+                        <td><a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-warning">Edit</a></td>
+                        </tr>
+                        
+                    }
+
+
+       </tbody>
+       </table> 
+   }
+}   
